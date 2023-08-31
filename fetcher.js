@@ -12,14 +12,14 @@ const request = require('request');
 
 request(urlStr, (error, response, body) => {
   if (error) console.log('error:', error);
-  
+
   if (response) console.log('statusCode:', response.statusCode, response.statusMessage);
 
   if (!body) return;
-  
+
   fs.writeFile(destPath, body, (err) => {
     if (err) throw err;
-    const size = fs.statSync(destPath).size
+    const size = fs.statSync(destPath).size;
     console.log(`Downloaded and saved ${size} bytes to index.html`);
   });
 });
